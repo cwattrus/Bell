@@ -44,11 +44,9 @@ if (Meteor.isServer) {
 }
 
 function watchForRing() {
-  var count = 0;
   var query = Rings.find({});
   var handle = query.observeChanges({
     added: function (id, user) {
-      count++;
       console.log("Bell should ring if master");
       ringBell();
     },

@@ -1,12 +1,18 @@
 <head>
   <title>bell</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fontastic.s3.amazonaws.com/hBMJjWFHgNUZdtSu4xjqoK/icons.css" rel="stylesheet">
 </head>
 
 <body>
   {{> hello}}
+  {{> config}}
 </body>
 
 <template name="hello">
   <button class="bell"><div class="icon-bell"></div></button>
+</template>
+
+<template name="config">
+<button class="bell-config"><div class="bell-config-icon icon-bell-remote"></div></button>
 </template>

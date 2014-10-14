@@ -35,3 +35,18 @@ button {
 .bell:focus {
     outline: none;
 }
+.bell-config {
+    color: #666;
+    display: block;
+    width: 30px;
+    margin: 25% auto;
+    cursor: pointer;
+    font-size: 16pt;
+}
+.bell-config:hover {
+    color:#333;
+    outline: none;
+}
+.bell-config:focus {
+    outline: none;
+}

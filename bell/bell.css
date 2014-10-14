@@ -1,0 +1,37 @@
+/* CSS declarations go here */
+
+* {
+    box-sizing: border-box;
+}
+html {
+    height: 100%;
+    margin: none;
+    padding: none;
+}
+body {
+    background: #91DDFA;
+    font-family: Helvetica, Arial;
+    height: 100%;
+    margin: none;
+    padding: none;
+}
+
+button {
+    display: block;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 74pt;
+}
+
+.bell {
+    width: 100px;
+    margin: 20% auto;
+    cursor: pointer;
+}
+.bell:hover {
+    color: #4A4A4A;
+}
+.bell:focus {
+    outline: none;
+}

@@ -14,5 +14,17 @@
 </template>
 
 <template name="config">
-<button class="bell-config"><div class="bell-config-icon icon-bell-remote"></div></button>
+<div class="bell-config">
+  <center>
+    <span class="label">Remote</span>
+    <div class="switch">
+      <input id="bell-toggle" class="cmn-toggle cmn-toggle-round" type="checkbox" checked="{{master}}">
+      <label for="bell-toggle"></label>
+    </div>
+    <span class="label">Bell</span>
+  </center>
+  <center><p>Open this page on other computers, tablets or phones to
+  set up a network or bells and remotes.</p></center>
+
+</div>
 </template>

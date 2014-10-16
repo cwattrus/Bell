@@ -1,14 +1,27 @@
 Rings = new Mongo.Collection("rings");
 
 if (Meteor.isClient) {
-  // counter starts at 0
-  Session.setDefault("bell", "remote");
-  watchForRing();
 
-  Template.hello.helpers({
-    counter: function () {
-      return Session.get("counter");
-    }
+  init = true;
+  
+  Meteor.startup(function(){
+      if(Cookie.get('bell')!='master') {
+        Cookie.set('bell', 'remote');
+      }
+      watchForRing();
+  });
+
+  Meteor.subscribe("rings", function() {
+    init = false;
+  });
+
+  Template.config.helpers({
+    master: function () {
+      if(Cookie.get('bell')=='master') {
+        return true;
+      }
+      else return false;
+    },
   });
 
   Template.hello.events({
@@ -17,22 +30,17 @@ if (Meteor.isClient) {
     }
   });
   Template.config.events({
-    'click button': function (event, template) {
+    'click #bell-toggle': function (event, template) {
       toggleBellType(template.find("button"));
     }
   });
 
   function toggleBellType(button) {
-    console.dir(button);
-    if(Session.get("bell")=="master") {
-      Session.set("bell", "remote");
-      $(".bell-config-icon").removeClass("icon-bell-master");
-      $(".bell-config-icon").addClass("icon-bell-remote");
+    if(Cookie.get('bell')=='master') {
+      Cookie.set('bell', 'remote');
     }
     else {
-      Session.set("bell", "master")
-      $(".bell-config-icon").addClass("icon-bell-master");
-      $(".bell-config-icon").removeClass("icon-bell-remote");
+      Cookie.set('bell', 'master');
     }
   }
 }
@@ -41,20 +49,26 @@ if (Meteor.isServer) {
   Meteor.startup(function () {
     // code to run on server at startup
   });
+  Meteor.publish('rings', function(){
+      return Rings.find({});
+  });
 }
 
 function watchForRing() {
   var query = Rings.find({});
   var handle = query.observeChanges({
+    _suppress_initial: true,
     added: function (id, user) {
-      console.log("Bell should ring if master");
-      ringBell();
+      if(init==false) {
+        console.log("Bell should ring if master");
+        ringBell();
+      }
     },
   });
 }
 
 function ringBell() {
-  if(Session.get("bell")=="master") {
+  if(Cookie.get('bell')=='master') {
     var audio = new Audio("Bell.wav");
     console.dir(audio);
     audio.play();

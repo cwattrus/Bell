@@ -36,7 +36,10 @@ if (Meteor.isClient) {
   });
   Template.share.events({
     'click .icon-remotes': function (event, template) {
-
+      $(".menu").fadeToggle(300);
+    },
+    'click .close': function (event, template) {
+      $(".menu").fadeToggle(300);
     }
   });
 

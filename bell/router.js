@@ -5,6 +5,10 @@
 Router.map(function() {
   this.route('start', {
     path: '/',
+    template: 'start',
+  });
+  this.route('bell', {
+    path: '/bell',
     template: 'bell',
   });
   this.route('ring', {

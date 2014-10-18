@@ -8,4 +8,5 @@ insecure
 jquery
 mrt:cookies
 iron:router
+accounts-google
 

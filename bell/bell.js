@@ -3,7 +3,7 @@ Rings = new Mongo.Collection("rings");
 if (Meteor.isClient) {
 
   init = true;
-  
+
   Meteor.startup(function(){
       if(Cookie.get('bell')!='master') {
         Cookie.set('bell', 'remote');
@@ -32,6 +32,11 @@ if (Meteor.isClient) {
   Template.config.events({
     'click #bell-toggle': function (event, template) {
       toggleBellType(template.find("button"));
+    }
+  });
+  Template.share.events({
+    'click .icon-remotes': function (event, template) {
+
     }
   });
 

@@ -7,4 +7,5 @@ meteor-platform
 insecure
 jquery
 mrt:cookies
+iron:router
 

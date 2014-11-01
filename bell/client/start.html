@@ -1,4 +1,16 @@
+<template name="account">
+  <div class="account">
+  {{#if currentUser}}
+    {{userMessage}}<br>
+    <small class="logout">Logout</small>
+  {{else}}
+    <button class="login">Login with Google</button><br>
+    <small>Save your bells.</small>
+  {{/if}}
+  </div>
+</template>
 <template name="start">
+  {{> account}}
   <div class="start">
     <div class="box">
       <div class="main-title">It's a bell. It rings.</div>
@@ -20,7 +32,7 @@
             to hit the bell.</p>
           </div>
       </div>
-      <div class="cta button">
+      <div class="cta button create-bell">
         Create your own bell
       </div>
     </div>

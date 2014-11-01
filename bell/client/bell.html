@@ -1,12 +1,18 @@
 <head>
   <title>bell</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://fontastic.s3.amazonaws.com/hBMJjWFHgNUZdtSu4xjqoK/icons.css" rel="stylesheet">
+  <!-- <link href="https://fontastic.s3.amazonaws.com/hBMJjWFHgNUZdtSu4xjqoK/icons.css" rel="stylesheet"> -->
 </head>
 
-<body>
-
-</body>
+<template name="layout">
+  {{#if currentUser}}
+    {{> menu}}
+  {{/if}}
+  <div class="page">
+    {{> yield}}
+  </div>
+  {{> account}}
+</template>
 
 <template name="bell">
   {{> hello}}
@@ -20,6 +26,7 @@
 
 <template name="config">
 <div class="bell-config">
+  <input type="text" class="bell-name" value="{{name}}" placeholder="Your bell name">
   <center>
     <span class="label">Remote</span>
     <div class="switch">
@@ -35,13 +42,13 @@
 </template>
 
 <template name="share">
-  <div class="share">
-    <div class="icon-remotes"></div>
+  <div class="icon-lolli share-menu-toggle"></div>
+  <div class="share-menu">
     <div class="menu box">
     <i class="icon-x close"></i>
     <div class="title">Share your bell with others</div>
     <div class="pure-g section">
-        <div class="pure-u-1-4">
+        <div class="pure-u-1-4 center">
           <i class="icon-link"></i>
         </div>
         <div class="pure-u-3-4">
@@ -67,5 +74,18 @@
         </div>
     </div>
     </div>
+  </div>
+</template>
+
+<template name="menu">
+  <div class="aside-menu"><div class="icon-menu"></div></div>
+  <div class="aside">
+    <div class="close">X</div>
+    <div class="title">Your bells</div>
+    <ul class="bells">
+      {{#each bells}}
+        <li><a href="/bell/{{this._id}}">{{this.name}}</a></li>
+      {{/each}}
+    </ul>
   </div>
 </template>

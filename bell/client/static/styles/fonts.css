@@ -1,0 +1,91 @@
+@charset "UTF-8";
+
+/* untitled-font-3 */
+@font-face {
+  font-family: "untitled-font-3";
+  src:url("https://fontastic.s3.amazonaws.com/hBMJjWFHgNUZdtSu4xjqoK/fonts/1414848768.eot");
+  src:url("https://fontastic.s3.amazonaws.com/hBMJjWFHgNUZdtSu4xjqoK/fonts/1414848768.eot?#iefix") format("embedded-opentype"),
+    url("https://fontastic.s3.amazonaws.com/hBMJjWFHgNUZdtSu4xjqoK/fonts/1414848768.woff") format("woff"),
+    url("https://fontastic.s3.amazonaws.com/hBMJjWFHgNUZdtSu4xjqoK/fonts/1414848768.ttf") format("truetype"),
+    url("https://fontastic.s3.amazonaws.com/hBMJjWFHgNUZdtSu4xjqoK/fonts/1414848768.svg#1414848768") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+[data-icon]:before {
+  font-family: "untitled-font-3" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: "untitled-font-3" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-bell:before {
+  content: "a";
+}
+.icon-bell-on:before {
+  content: "b";
+}
+.icon-alarm:before {
+  content: "c";
+}
+.icon-bell-mute:before {
+  content: "d";
+}
+.icon-bell-snooze:before {
+  content: "e";
+}
+.icon-bell-master:before {
+  content: "f";
+}
+.icon-bell-remote:before {
+  content: "g";
+}
+.icon-remotes-filled:before {
+  content: "h";
+}
+.icon-lolli:before {
+  content: "i";
+}
+.icon-ice-cream:before {
+  content: "j";
+}
+.icon-remotes:before {
+  content: "k";
+}
+.icon-nightmode:before {
+  content: "l";
+}
+.icon-x:before {
+  content: "m";
+}
+.icon-link:before {
+  content: "n";
+}
+.icon-timer:before {
+  content: "o";
+}
+.icon-account:before {
+  content: "p";
+}
+.icon-menu:before {
+  content: "q";
+}

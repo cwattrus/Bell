@@ -1,19 +1,16 @@
-Rings = new Mongo.Collection("rings");
-
 if (Meteor.isClient) {
-
+  bell = Session.get("bell");
   init = true;
 
   Meteor.startup(function(){
       if(Cookie.get('bell')!='master') {
         Cookie.set('bell', 'remote');
       }
-      watchForRing();
   });
 
-  Meteor.subscribe("rings", function() {
-    init = false;
-  });
+  Template.hello.rendered = function() {
+    watchForRing();
+  }
 
   Template.config.helpers({
     master: function () {
@@ -26,20 +23,28 @@ if (Meteor.isClient) {
 
   Template.hello.events({
     'click button': function () {
-      queueRing();
+      queueRing(bell);
     }
   });
   Template.config.events({
     'click #bell-toggle': function (event, template) {
       toggleBellType(template.find("button"));
+    },
+    'keyup .bell-name': function(event,template) {
+      var newValue = $(".bell-name").val();
+      var bell = Bells.findOne({"_id":Session.get("bell")});
+      var oldValue = bell.name;
+      if(newValue!=oldValue) {
+        Bells.update({"_id":bell._id}, {$set : {"name":newValue}});
+      }
     }
   });
   Template.share.events({
-    'click .icon-remotes': function (event, template) {
-      $(".menu").fadeToggle(300);
+    'click .share-menu-toggle': function (event, template) {
+      $(".share-menu").toggleClass("expanded");
     },
     'click .close': function (event, template) {
-      $(".menu").fadeToggle(300);
+      $(".share-menu").toggleClass("expanded");
     }
   });
 
@@ -53,17 +58,8 @@ if (Meteor.isClient) {
   }
 }
 
-if (Meteor.isServer) {
-  Meteor.startup(function () {
-    // code to run on server at startup
-  });
-  Meteor.publish('rings', function(){
-      return Rings.find({});
-  });
-}
-
 function watchForRing() {
-  var query = Rings.find({});
+  var query = Rings.find({"bell":bell});
   var handle = query.observeChanges({
     _suppress_initial: true,
     added: function (id, user) {
@@ -76,7 +72,7 @@ function watchForRing() {
 }
 
 function ringBell() {
-  if(Cookie.get('bell')=='master') {
+  if(Cookie.get("bell")=='master') {
     var audio = new Audio("Bell.wav");
     console.dir(audio);
     audio.play();
@@ -84,5 +80,5 @@ function ringBell() {
   }
 }
 function queueRing() {
-  Rings.insert({"time": $.now()});
+  Rings.insert({"time": $.now(), "bell":bell});
 }

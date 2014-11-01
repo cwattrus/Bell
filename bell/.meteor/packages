@@ -9,4 +9,5 @@ jquery
 mrt:cookies
 iron:router
 accounts-google
+accounts-ui
 

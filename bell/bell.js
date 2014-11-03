@@ -73,7 +73,7 @@ function watchForRing() {
 
 function ringBell() {
   if(Cookie.get("bell")=='master') {
-    var audio = new Audio("Bell.wav");
+    var audio = new Audio("/Bell.wav");
     console.dir(audio);
     audio.play();
     console.log("bell rung");

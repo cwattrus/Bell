@@ -71,14 +71,19 @@ bell.button {
 
 .bell {
   width: 262px;
-cursor: pointer;
-position: relative;
-left: 50%;
-top: 20%;
-margin-left: -130px;
-color: #FFF792;
-font-size: 175pt;
-border: 0;
+  cursor: pointer;
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  margin-left: -130px;
+  color: #FFF792;
+  font-size: 175pt;
+  border: 0;
+}
+@media only screen and (max-width : 500px) {
+  .bell {
+    font-size: 135pt;
+  }
 }
 .bell:hover {
     color: #4A4A4A;
@@ -295,7 +300,8 @@ input.cmn-toggle-round:checked + label:after {
   top: 20px;
   left: 81px;
   font-size: 34pt;
-  color: white
+  color: white;
+  cursor: pointer;
 }
 .share-menu.expanded {
   top: 20px;
@@ -458,7 +464,7 @@ a {
 .aside .title {
   color: white;
   margin-top: 20px;
-  padding: 20px 0 20px 20px;
+  padding: 20px 0 20px 30px;
   font-size: 24pt;
 }
 .aside .close {
@@ -492,6 +498,10 @@ and (max-width : 500px) {
     height: 25px;
     padding-top: 2px;
   }
+}
+.aside .new-bell {
+  margin-top: 20px;
+  margin-left: 40px;
 }
 
 .page {

@@ -32,6 +32,19 @@ Template.menu.events({
   'click .close': function() {
     $(".aside").toggleClass("expanded");
   },
+  'click .new-bell': function() {
+    var bell;
+
+    if(Meteor.user()) {
+      bell = Bells.insert({"owner": Meteor.userId(), "name":"New bell"});
+    }
+    else {
+      bell = Bells.insert({});
+    }
+    check(bell, String);
+    Cookie.set(bell, 'remote');
+    Router.go("/bell/"+bell);
+  }
 });
 
 Template.start.events({
@@ -47,7 +60,6 @@ Template.start.events({
     check(bell, String);
     Cookie.set(bell, 'remote');
     Router.go("/bell/"+bell);
-
   },
 });
 
